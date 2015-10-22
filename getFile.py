@@ -15,7 +15,9 @@ if len(fileList)>1:
 with open('courseIDDict','r') as input:
     courseIDDict=pickle.load(input)    
 
-os.mkdir('videos')    
+if os.path.exists('videos')!=True:
+    os.mkdir('videos')
+    
 for index,row in data.iterrows():
     urlMatch=re.match('(https://taiwan.s3.hicloud.net.tw/)(\d+)/.+',row.url)
     if urlMatch!=None:
